@@ -1,0 +1,26 @@
+travel planner
+
+
+MODELS
+- User:
+  has_many :trips
+
+  - name
+  - username
+  - email
+  - password
+      => use bcrypt: t.string :password_digest
+
+- Trip:
+  belongs_to :user
+  - departure_city
+  - departure_country
+  - destination_city
+  - destination_country
+  - start_date
+  - end_date
+  - transportation
+
+Location
+ - country
+ - city
