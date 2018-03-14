@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
 
   end
-  
+
   get '/users/:id' do
     if logged_in?
       @user = current_user
@@ -39,6 +39,13 @@ class UsersController < ApplicationController
     else
       redirect '/'
     end
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.clear
+    end
+    redirect '/'
   end
 
 
