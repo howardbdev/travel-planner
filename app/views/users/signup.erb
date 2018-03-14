@@ -1,8 +1,21 @@
-<form action="/signup" method="POST">
-  First Name: <input type="text" name="user[first_name]"/>
-  Lass Name <input type="text" name="user[last_name]">
-  Email: <input type="text" name="user[email]">
-  Password: <input type="password" name="user[password]">
-  <input type="submit" value="Sign Up"/>
 
+<form action="/signup" method="POST">
+  <div class="form-group">
+    <label for="first_name">First Name</label>
+    <input type="string" class="form-control" name="user[first_name]"  id="first_name" placeholder="First name">
+  </div>
+  <div class="form-group">
+    <label for="last_name">Last Name</label>
+    <input type="string" class="form-control" name="user[last_name]"  id="last_name" placeholder="Last name">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" name="user[email]"  id="email" placeholder="email@example.com">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" name="user[password]" id="password" placeholder="New password">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create Account</button>
 </form>

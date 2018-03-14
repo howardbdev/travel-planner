@@ -1,8 +1,11 @@
 Your trips are:
+
 <ul>
 <%@trips.each do |trip|%>
-<li><%=trip.id%>
+  <li><%=trip.id%>
   <li><%=trip.departure_city%>
 <%end%>
 
 </ul>
+
+Go back to home page:  <a href="/users/<%=current_user.id%>">here</a>

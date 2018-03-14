@@ -9,6 +9,18 @@ class TripsController < ApplicationController
     end
   end
 
+  get '/trips/new' do
+    if logged_in?
+      erb :'trips/new'
+    else
+      redirect '/'
+    end
+  end
+
+  post '/trips' do
+    raise params.inspect
+  end
+
   get '/trips/:id' do
     @trip = Trip.find_by(id: params[:id])
     if logged_in? && @trip
@@ -24,7 +36,7 @@ class TripsController < ApplicationController
     if logged_in?
       # search = params[:departurecity].capitalize
       # @trips = current_user.trips.where(departure_city: search )
-    
+
       erb :'trips/find_by/departure_city'
     end
   end

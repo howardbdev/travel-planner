@@ -1,0 +1,5 @@
+ingrid = User.create(first_name: "Ingrid", last_name: "Wong", email: "ingridwong@gmail.com", password:"ingridwong")
+victoria = User.create(first_name: "Victoria", last_name: "Hou", email: "victoriahou@gmail.com", password:"victoriahou")
+sally = User.create(first_name: "Sally", last_name: "Choi", email: "sallychoi@gmail.com", password:"sallychoi")
+ingrid.trips.create(departure_city: "Taipei", departure_country: "Taiwan", destination_city: "DC", destination_country: "USA", start_date: "15/03/2018", end_date: "25/03/2018", transportation: "Plane" )
+victoria.trips.create(departure_city: "DC", departure_country: "USA", destination_city: "Paris", destination_country: "France", start_date: "15/03/2018", end_date: "25/03/2018", transportation: "Plane" )
