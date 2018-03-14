@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
 
   end
-
+  
   get '/users/:id' do
     if logged_in?
       @user = current_user
