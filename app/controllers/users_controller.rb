@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if !params[:user][:name].empty? &&!params[:user][:username].empty? && !params[:user][:email].empty?
+    if !params[:user][:first_name].empty? && !params[:user][:last_name].empty? && !params[:user][:email].empty?
       user = User.new(params[:user])
     end
 
@@ -27,12 +27,8 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/login' do
-    erb :'users/login'
-  end
-
   post '/login' do
-    user = User.find_by(username: params[:username])
+    user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
