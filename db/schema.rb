@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314191740) do
+ActiveRecord::Schema.define(version: 20180314203519) do
 
   create_table "trips", force: :cascade do |t|
     t.integer "user_id"
-    t.string "departure_city"
-    t.string "departure_country"
     t.string "destination_city"
     t.string "destination_country"
-    t.datetime "start_date"
-    t.datetime "end_date"
     t.string "transportation"
+    t.string "origin_city"
+    t.string "origin_country"
+    t.datetime "departing"
+    t.datetime "returning"
   end
 
   create_table "users", force: :cascade do |t|

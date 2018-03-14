@@ -18,10 +18,22 @@ class TripsController < ApplicationController
   end
 
   post '/trips' do
-    raise params.inspect
+    origin = params[:origin].split(', ')
+    origin_city = origin[0]
+    origin_country = origin[1]
+
+    destination = params[:destination].split(', ')
+    destination_city = origin[0]
+    destination_country = origin[1]
+
+    trip = current_user.trips.create(origin_city: origin_city, origin_country: origin_country, destination_city: destination_city, destination_country: destination_country, departing: params[:departing], returning: params[:returning], transportation: params[:transportation])
+
+    redirect "/trips/#{trip.id}"
+
   end
 
   get '/trips/:id' do
+    binding.pry
     @trip = Trip.find_by(id: params[:id])
     if logged_in? && @trip
       if @trip.user == current_user
