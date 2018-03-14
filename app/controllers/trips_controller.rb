@@ -33,7 +33,6 @@ class TripsController < ApplicationController
   end
 
   get '/trips/:id' do
-    binding.pry
     @trip = Trip.find_by(id: params[:id])
     if logged_in? && @trip
       if @trip.user == current_user
