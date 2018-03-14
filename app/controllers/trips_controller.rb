@@ -24,7 +24,7 @@ class TripsController < ApplicationController
     if logged_in?
       # search = params[:departurecity].capitalize
       # @trips = current_user.trips.where(departure_city: search )
-      @trips = current_user.trips
+    
       erb :'trips/find_by/departure_city'
     end
   end
