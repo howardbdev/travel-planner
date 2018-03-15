@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 
-  get '/trips' do
+  get '/you/trips' do
     if logged_in?
       @trips = current_user.trips
       erb :'trips/index'
@@ -9,7 +9,7 @@ class TripsController < ApplicationController
     end
   end
 
-  get '/trips/new' do
+  get '/you/trips/new' do
     if logged_in?
       erb :'trips/new'
     else
@@ -20,26 +20,23 @@ class TripsController < ApplicationController
   post '/trips' do
 
     trip = current_user.trips.create(params[:trip])
-    redirect "/trips/#{trip.id}"
+    redirect "/you/trips/#{trip.id}"
 
   end
 
-  def parse_location(params)
-    location = params.split(', ')
-  end
 
-  get '/trips/:id' do
+  get '/you/trips/:id' do
     @trip = Trip.find_by(id: params[:id])
     if logged_in? && @trip
       if @trip.user == current_user
         erb :'trips/show'
       end
     else
-      redirect '/trips'
+      redirect '/you/trips'
     end
   end
 
-  get '/trips/:id/edit' do
+  get '/you/trips/:id/edit' do
 
     @trip = Trip.find_by(id: params[:id])
     if logged_in? && @trip
@@ -47,7 +44,7 @@ class TripsController < ApplicationController
         erb :'trips/edit'
       end
     else
-      redirect '/trips'
+      redirect '/you/trips'
     end
   end
 
@@ -59,7 +56,7 @@ class TripsController < ApplicationController
         redirect "/trips/#{@trip.id}"
       end
     else
-      redirect '/trips'
+      redirect '/you/trips'
     end
   end
 
@@ -70,7 +67,7 @@ class TripsController < ApplicationController
         @trip.destroy
       end
     end
-    redirect '/trips'
+    redirect '/you/trips'
   end
 
 
