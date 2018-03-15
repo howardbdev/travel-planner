@@ -1,0 +1,28 @@
+<form action="/trips/<%=@trip.id%>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
+  <div class="form-group">
+    <label for="Origin">Origin</label>
+    <input type="string" class="form-control" name="trip[origin]"  id="origin" value="<%=@trip.origin%>">
+  </div>
+  <div class="form-group">
+    <label for="destination">Destination</label>
+    <input type="string" class="form-control" name="trip[destination]"  id="destination" value="<%=@trip.destination%>">
+  </div>
+
+  <div class="form-group">
+    <label for="departing">Departing</label>
+    <input type="date" class="form-control" name="trip[departing]"  id="departing" value="<%=@trip.departing%>">
+  </div>
+
+  <div class="form-group">
+    <label for="returning">Returning</label>
+    <input type="date" class="form-control" name="trip[returning]" id="returning" value="<%=@trip.returning%>">
+  </div>
+
+  <div class="form-group">
+    <label for="transportation">Transportation</label>
+    <input type="string" class="form-control" name="trip[transportation]" id="transportation" value="<%=@trip.transportation%>">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Edit Trip</button>
+</form>

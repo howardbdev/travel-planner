@@ -18,18 +18,14 @@ class TripsController < ApplicationController
   end
 
   post '/trips' do
-    origin = params[:origin].split(', ')
-    origin_city = origin[0]
-    origin_country = origin[1]
 
-    destination = params[:destination].split(', ')
-    destination_city = origin[0]
-    destination_country = origin[1]
-
-    trip = current_user.trips.create(origin_city: origin_city, origin_country: origin_country, destination_city: destination_city, destination_country: destination_country, departing: params[:departing], returning: params[:returning], transportation: params[:transportation])
-
+    trip = current_user.trips.create(params[:trip])
     redirect "/trips/#{trip.id}"
 
+  end
+
+  def parse_location(params)
+    location = params.split(', ')
   end
 
   get '/trips/:id' do
@@ -43,13 +39,40 @@ class TripsController < ApplicationController
     end
   end
 
-  get '/trips/departure_city/:departurecity' do
-    if logged_in?
-      # search = params[:departurecity].capitalize
-      # @trips = current_user.trips.where(departure_city: search )
+  get '/trips/:id/edit' do
 
-      erb :'trips/find_by/departure_city'
+    @trip = Trip.find_by(id: params[:id])
+    if logged_in? && @trip
+      if @trip.user == current_user
+        erb :'trips/edit'
+      end
+    else
+      redirect '/trips'
     end
   end
+
+  patch '/trips/:id' do
+    @trip = Trip.find_by(id: params[:id])
+    if logged_in? && @trip
+      if @trip.user == current_user
+        @trip.update(params[:trip])
+        redirect "/trips/#{@trip.id}"
+      end
+    else
+      redirect '/trips'
+    end
+  end
+
+  delete '/trips/:id' do
+    @trip = Trip.find_by(id: params[:id])
+    if logged_in? && @trip
+      if @trip.user == current_user
+        @trip.destroy
+      end
+    end
+    redirect '/trips'
+  end
+
+
 
 end

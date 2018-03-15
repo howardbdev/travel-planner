@@ -2,8 +2,8 @@ Your trips are:
 
 <ul>
 <%@trips.each do |trip|%>
-  <li><%=trip.id%>
-  <li><%=trip.origin_city%>
+  <li><%=trip.origin%>
+  <li><a href="trips/<%=trip.id%>">Go to trip</a>
 <%end%>
 
 </ul>

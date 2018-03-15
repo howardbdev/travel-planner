@@ -1,1 +1,7 @@
-<%=@trip.origin_city%>
+<%=@trip.origin%>
+
+<a href="/trips/<%=@trip.id%>/edit">Edit Trip</a>
+<form action="/trips/<%=@trip.id%>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Trip">
+</form>
