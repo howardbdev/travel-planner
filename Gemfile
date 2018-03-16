@@ -9,4 +9,5 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
+gem 'tux'
 gem "simple_calendar", "~> 2.0"

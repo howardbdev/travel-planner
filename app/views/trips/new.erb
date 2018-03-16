@@ -1,26 +1,32 @@
 
-<form action="/your-trips" method="POST">
-  <div class="form-group">
-    <label for="Origin">Origin</label>
-    <input type="string" class="form-control" name="trip[origin]"  id="origin" placeholder="City, Country">
-  </div>
-  <div class="form-group">
-    <label for="destination">Destination</label>
-    <input type="string" class="form-control" name="trip[destination]"  id="destination" placeholder="City, Country">
-  </div>
-  <div class="form-group">
-    <label for="departing">Departing</label>
-    <input type="date" class="form-control" name="trip[departing]"  id="departing" placeholder="Departing">
-  </div>
-  <div class="form-group">
-    <label for="returning">Returning</label>
-    <input type="date" class="form-control" name="trip[returning]" id="returning" placeholder="Returning">
-  </div>
+<div class="container">
+  <div class="row new_trip">
+     <div class="col-md center-block">
+      <form action="/my-trips" method="POST">
+        <div class="form-group">
+          <label for="Origin">Origin</label>
+          <input type="string" class="form-control" name="trip[origin]"  id="origin" placeholder="City, Country">
+        </div>
+        <div class="form-group">
+          <label for="destination">Destination</label>
+          <input type="string" class="form-control" name="trip[destination]"  id="destination" placeholder="City, Country">
+        </div>
+        <div class="form-group">
+          <label for="departing">Departing</label>
+          <input type="date" class="form-control" name="trip[departing]"  id="departing" placeholder="Departing">
+        </div>
+        <div class="form-group">
+          <label for="returning">Returning</label>
+          <input type="date" class="form-control" name="trip[returning]" id="returning" placeholder="Returning">
+        </div>
 
-  <div class="form-group">
-    <label for="transportation">Transportation</label>
-    <input type="string" class="form-control" name="trip[transportation]" id="transportation" placeholder="Transportation">
-  </div>
+        <div class="form-group">
+          <label for="transportation">Transportation</label>
+          <input type="string" class="form-control" name="trip[transportation]" id="transportation" placeholder="Transportation">
+        </div>
 
-  <button type="submit" class="btn btn-primary">Create Trip</button>
-</form>
+        <button type="submit" class="btn btn-primary">Create Trip</button>
+      </form>
+    </div>
+  </div>
+</div>

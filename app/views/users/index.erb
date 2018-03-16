@@ -4,7 +4,7 @@ Your trips are:
 <ul>
 <%@user.trips.each do |trip|%>
   <li><%=trip.origin%>
-  <li><a href="my-trips/<%=trip.id%>">Go to trip</a>
+  <li><a href="my-trips/<%=trip.slug%>">Go to trip</a>
 <%end%>
 
 </ul>

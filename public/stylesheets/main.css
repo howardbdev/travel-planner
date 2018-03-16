@@ -1,6 +1,7 @@
 *= require simple_calendar
 
 html, body {
+    background-color: #EEE5EE;
     height: 100%;
     width: 100%;
 }
@@ -20,9 +21,13 @@ div#welcome_image {
 }
 
 #signup_form {
-  margin-top: 1.5em;
+  margin-top: 3rem;
 }
 .tall_row {
-  margin-top: 1.5em;
-  height: 5em;
+  margin-top: 1.5rem;
+  height: 5rem;
+}
+
+.new_trip {
+  
 }
