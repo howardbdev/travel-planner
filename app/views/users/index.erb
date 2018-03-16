@@ -1,4 +1,14 @@
 Hello, <%=@user.first_name%>!
-To view existing trips, click <a href="/you/trips">here</a>
-To create a new trip, click <a href="/you/trips/new">here</a>
+Your trips are:
+
+<ul>
+<%@user.trips.each do |trip|%>
+  <li><%=trip.origin%>
+  <li><a href="my-trips/<%=trip.id%>">Go to trip</a>
+<%end%>
+
+</ul>
+
+
+To create a new trip, click <a href="/my-trips/new">here</a>
 Or sign out <a href="/logout">here</a>

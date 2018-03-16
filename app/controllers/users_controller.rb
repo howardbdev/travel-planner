@@ -11,14 +11,14 @@ class UsersController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      redirect "/you"
+      redirect "/my-trips"
     else
       redirect '/signup'
     end
 
   end
 
-  get '/you' do
+  get '/my-trips' do
     if logged_in?
       @user = current_user
       erb :'users/index'
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     user = User.find_by(email: params[:user][:email])
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect "/you"
+      redirect "/my-trips"
     else
       redirect '/'
     end

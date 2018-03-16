@@ -1,12 +1,13 @@
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row tall_row">
 
-    <div class="col-sm">
+    <div class="col-sm col-md-4 ">
+
       <h1>TravelLog</h1>
     </div>
 
-    <div class="col-sm">
+    <div class="col-sm col-md-4 offset-md-4">
       <form action="/login" method="POST" class="form-inline">
         <div class="form-row">
           <div class="col">
@@ -28,8 +29,9 @@
   </div>
   <div class="row" id="welcome_image" >
       <div class="col-md-4"></div>
-      <div class="col-sm col-md-4 offset-md-4">
-        <h2>Ready to travel the world? Create a new account here:</h2>
+      <div class="col-sm col-md-4 offset-md-4" id="signup_form">
+        <h2>Ready to travel the world?</h2>
+        <h2>Create a new account here:</h2>
         <form action="/signup" method="POST">
           <div class="form-group">
             <label for="first_name">First Name</label>

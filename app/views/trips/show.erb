@@ -1,8 +1,8 @@
 <%=@trip.origin%><br></br>
 
-Go back to all your trips: <a href="/you">here</a>
-<a href="/you/trips/<%=@trip.id%>/edit">Edit Trip</a>
-<form action="/trips/<%=@trip.id%>" method="POST">
+Go back to all your trips: <a href="/my-trips">here</a>
+<a href="/my-trips/<%=@trip.id%>/edit">Edit Trip</a>
+<form action="/my-trips/<%=@trip.id%>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Trip">
 </form>

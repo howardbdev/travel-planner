@@ -1,15 +1,8 @@
 class TripsController < ApplicationController
 
-  get '/you/trips' do
-    if logged_in?
-      @trips = current_user.trips
-      erb :'trips/index'
-    else
-      redirect '/'
-    end
-  end
 
-  get '/you/trips/new' do
+
+  get '/my-trips/new' do
     if logged_in?
       erb :'trips/new'
     else
@@ -17,26 +10,24 @@ class TripsController < ApplicationController
     end
   end
 
-  post '/trips' do
-
+  post '/my-trips' do
     trip = current_user.trips.create(params[:trip])
-    redirect "/you/trips/#{trip.id}"
-
+    redirect "/my-trips/#{trip.id}"
   end
 
 
-  get '/you/trips/:id' do
+  get '/my-trips/:id' do
     @trip = Trip.find_by(id: params[:id])
     if logged_in? && @trip
       if @trip.user == current_user
         erb :'trips/show'
       end
     else
-      redirect '/you/trips'
+      redirect '/my-trips'
     end
   end
 
-  get '/you/trips/:id/edit' do
+  get '/my-trips/:id/edit' do
 
     @trip = Trip.find_by(id: params[:id])
     if logged_in? && @trip
@@ -44,30 +35,30 @@ class TripsController < ApplicationController
         erb :'trips/edit'
       end
     else
-      redirect '/you/trips'
+      redirect '/my-trips'
     end
   end
 
-  patch '/trips/:id' do
+  patch '/my-trips/:id' do
     @trip = Trip.find_by(id: params[:id])
     if logged_in? && @trip
       if @trip.user == current_user
         @trip.update(params[:trip])
-        redirect "/trips/#{@trip.id}"
+        redirect "/my-trips/#{@trip.id}"
       end
     else
-      redirect '/you/trips'
+      redirect '/my-trips'
     end
   end
 
-  delete '/trips/:id' do
+  delete '/my-trips/:id' do
     @trip = Trip.find_by(id: params[:id])
     if logged_in? && @trip
       if @trip.user == current_user
         @trip.destroy
       end
     end
-    redirect '/you/trips'
+    redirect '/my-trips'
   end
 
 
