@@ -12,15 +12,15 @@ class TripsController < ApplicationController
 
   post '/my-trips' do
     trip = current_user.trips.create(params[:trip])
-    binding.pry
     redirect "/my-trips/#{trip.slug}"
   end
 
 
   get '/my-trips/:slug' do
-    @trip = Trip.find_by(id: params[:id])
-    if logged_in? && @trip
-      if @trip.user == current_user
+
+    if logged_in?
+      @trip = Trip.find_by_slug(current_user, params[:slug])
+      if @trip
         erb :'trips/show'
       end
     else
@@ -29,10 +29,9 @@ class TripsController < ApplicationController
   end
 
   get '/my-trips/:slug/edit' do
-
-    @trip = Trip.find_by(id: params[:id])
-    if logged_in? && @trip
-      if @trip.user == current_user
+    if logged_in?
+      @trip = Trip.find_by_slug(current_user, params[:slug])
+      if @trip
         erb :'trips/edit'
       end
     else
@@ -41,9 +40,10 @@ class TripsController < ApplicationController
   end
 
   patch '/my-trips/:slug' do
-    @trip = Trip.find_by(id: params[:id])
-    if logged_in? && @trip
-      if @trip.user == current_user
+
+    if logged_in?
+      @trip = Trip.find_by_slug(current_user, params[:slug])
+      if @trip
         @trip.update(params[:trip])
         redirect "/my-trips/#{@trip.slug}"
       end
@@ -53,15 +53,13 @@ class TripsController < ApplicationController
   end
 
   delete '/my-trips/:slug' do
-    @trip = Trip.find_by(id: params[:id])
-    if logged_in? && @trip
-      if @trip.user == current_user
+    if logged_in?
+      @trip = Trip.find_by_slug(current_user, params[:slug])
+      if @trip
         @trip.destroy
       end
     end
     redirect '/my-trips'
   end
-
-
 
 end
