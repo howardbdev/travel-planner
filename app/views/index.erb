@@ -1,61 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" height="80" href="#">TravelLog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div class="container-fluid">
-  <div class="row tall_row">
-    <div class="col-sm col-md-4 ">
-      <h1>TravelLog</h1>
-    </div>
-
-    <div class="col-sm col-md-4 offset-md-4">
-      <form action="/login" method="POST" class="form-inline">
-        <div class="form-row">
-          <div class="col">
-            <label for="email"></label>
-            <input type="email" class="form-control" name="user[email]"  id="email" placeholder="email@example.com">
-          </div>
-
-          <div class="col">
-            <label for="password"></label>
-            <input type="password" class="form-control" name="user[password]" id="password" placeholder="Password">
-          </div>
-          <div class="col">
-            <button type="submit" class="btn btn-primary mb-2">Sign in</button>
-          </div>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <form action="/login" method="POST" class="form-inline my-2 my-lg-0">
+      <div class="form-row">
+        <div class="col">
+          <label for="email"></label>
+          <input type="email" class="form-control" name="user[email]"  id="email" placeholder="email@example.com">
         </div>
+
+        <div class="col">
+          <label for="password"></label>
+          <input type="password" class="form-control" name="user[password]" id="password" placeholder="Password">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary mb-2">Sign in</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+
+
+<div class="row" id="welcome_image" >
+    <div class="col-md-4 big_block"></div>
+    <div class="col-sm col-md-4 offset-md-4 big_block" >
+      <h2>Ready to travel the world?</h2>
+      <h2>Create a new account here:</h2>
+      <form action="/signup" method="POST">
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="string" class="form-control" name="user[first_name]"  id="first_name" placeholder="First name">
+        </div>
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input type="string" class="form-control" name="user[last_name]"  id="last_name" placeholder="Last name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" name="user[email]"  id="email" placeholder="email@example.com">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="user[password]" id="password" placeholder="New password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Account</button>
       </form>
     </div>
-
   </div>
-  <div class="row" id="welcome_image" >
-      <div class="col-md-4 big_block"></div>
-      <div class="col-sm col-md-4 offset-md-4 big_block" >
-        <h2>Ready to travel the world?</h2>
-        <h2>Create a new account here:</h2>
-        <form action="/signup" method="POST">
-          <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input type="string" class="form-control" name="user[first_name]"  id="first_name" placeholder="First name">
-          </div>
-          <div class="form-group">
-            <label for="last_name">Last Name</label>
-            <input type="string" class="form-control" name="user[last_name]"  id="last_name" placeholder="Last name">
-          </div>
-          <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" name="user[email]"  id="email" placeholder="email@example.com">
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="user[password]" id="password" placeholder="New password">
-          </div>
-
-          <button type="submit" class="btn btn-primary">Create Account</button>
-        </form>
-      </div>
-
-
-
-    </div>
-
-
-
 </div>

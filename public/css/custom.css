@@ -1,20 +1,4 @@
-body {
-  background-color: #EEE5EE;
-  font-family: Sans-Serif;
-  line-height: 18px;
-  }
-
-div.edit_form {
-  background-color: #EEE5EE;
-}
-
-div#welcome_image {
-  height: 90vh;
-  background: url("../images/Paris.jpg");
-  background-size: 100% 100%;
-
-}
-
+/* custom navbar height, source: https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height */
 
 .navbar {
  min-height: 80px;
