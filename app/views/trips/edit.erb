@@ -17,12 +17,14 @@
 
         <div class="form-group">
           <label for="departing">Departing</label>
-          <input type="date" class="form-control" name="trip[departing]"  id="departing" value="<%=@trip.placeholder_value_departing%>">
+          <input type="date" class="form-control" name="trip[departing]"  id="departing" value="<%=@trip.departing.to_formatted_s.split(" ").first
+%>">
         </div>
 
         <div class="form-group">
           <label for="returning">Returning</label>
-          <input type="date" class="form-control" name="trip[returning]" id="returning" value="<%=@trip.returning%>">
+          <input type="date" class="form-control" name="trip[returning]" id="returning" value="<%=@trip.returning.to_formatted_s.split(" ").first
+%>">
         </div>
 
         <div class="form-group">
