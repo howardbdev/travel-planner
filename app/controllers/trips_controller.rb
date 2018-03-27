@@ -62,7 +62,7 @@ class TripsController < ApplicationController
 
   post '/search-trip' do
     if logged_in?
-
+      
       @trips = Trip.find_by(params[:search],current_user)
       erb :'trips/search-result'
 
