@@ -1,25 +1,15 @@
-
-<!-- 
-NOTES: Initially sorted by departing date, but with option to sort based on other criterium -->
-
-
-
-<br></br>
-Hello, <%=@user.first_name%>!
-<br></br>
-<%if @user.trips.empty?%>
-  You have no existing trips, to create one, click <a href="/my-trips/new">here</a>
-<%else%>
-
-  Your trips are:
-
+<% if @trips.empty? %>
+  No result.
+<% else %>
+  Your search has <%=@trips.size%> results:
+  <br></br>
   <section class="col-sm-8 table-responsive">
     <table class="table table-bordered table-striped table-condensed">
       <thead>
         <tr> <th>Origin</th> <th>Destination</th><th>Departing</th><th>Returning</th><th>Transportation</th>   </tr>
       </thead>
       <tbody>
-        <%@user.trips.each do |trip|%>
+        <%@trips.each do |trip|%>
         <tr>
           <td><%=trip.origin%></td>
           <td><%=trip.destination%></td>
@@ -34,4 +24,8 @@ Hello, <%=@user.first_name%>!
       </tbody>
       </table>
   </section>
-  <%end%>
+
+<%end %>
+
+List all results and highlight the search term
+- sort trips by departing date

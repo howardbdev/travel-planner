@@ -1,18 +1,12 @@
-*= require simple_calendar
-
-html, body {
-    background-color: #EEE5EE;
-    height: 100%;
-    width: 100%;
-}
-
-  /* --- Welcome Page Styles --- */
 body {
   background-color: #EEE5EE;
   font-family: Sans-Serif;
   line-height: 18px;
   }
 
+div.edit_form {
+  background-color: #EEE5EE;
+}
 
 div#welcome_image {
   height: 90vh;
@@ -26,8 +20,4 @@ div#welcome_image {
 .tall_row {
   margin-top: 1.5rem;
   height: 5rem;
-}
-
-.new_trip {
-  
 }

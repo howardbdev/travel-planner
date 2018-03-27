@@ -1,29 +1,38 @@
-<form action="/my-trips/<%=@trip.slug%>" method="POST">
-  <input type="hidden" id="hidden" name="_method" value="PATCH">
-  <div class="form-group">
-    <label for="Origin">Origin</label>
-    <input type="string" class="form-control" name="trip[origin]"  id="origin" value="<%=@trip.origin%>">
-  </div>
-  <div class="form-group">
-    <label for="destination">Destination</label>
-    <input type="string" class="form-control" name="trip[destination]"  id="destination" value="<%=@trip.destination%>">
-  </div>
 
 
-  <div class="form-group">
-    <label for="departing">Departing</label>
-    <input type="date" class="form-control" name="trip[departing]"  id="departing" value="<%=@trip.placeholder_value_departing%>">
-  </div>
+<div class="container">
+  <div class="row align-items-center justify-content-center"> <!--WHY ISN"T THIS WORK??!?!-->
+    <div class="col-lg-3"></div>
+     <div class="col-lg-6">
+      <form action="/my-trips/<%=@trip.slug%>" method="POST">
+        <input type="hidden" id="hidden" name="_method" value="PATCH">
+        <div class="form-group">
+          <label for="Origin">Origin</label>
+          <input type="string" class="form-control" name="trip[origin]"  id="origin" value="<%=@trip.origin%>">
+        </div>
+        <div class="form-group">
+          <label for="destination">Destination</label>
+          <input type="string" class="form-control" name="trip[destination]"  id="destination" value="<%=@trip.destination%>">
+        </div>
 
-  <div class="form-group">
-    <label for="returning">Returning</label>
-    <input type="date" class="form-control" name="trip[returning]" id="returning" value="<%=@trip.returning%>">
-  </div>
+        <div class="form-group">
+          <label for="departing">Departing</label>
+          <input type="date" class="form-control" name="trip[departing]"  id="departing" value="<%=@trip.placeholder_value_departing%>">
+        </div>
 
-  <div class="form-group">
-    <label for="transportation">Transportation</label>
-    <input type="string" class="form-control" name="trip[transportation]" id="transportation" value="<%=@trip.transportation%>">
-  </div>
+        <div class="form-group">
+          <label for="returning">Returning</label>
+          <input type="date" class="form-control" name="trip[returning]" id="returning" value="<%=@trip.returning%>">
+        </div>
 
-  <button type="submit" class="btn btn-primary">Edit Trip</button>
-</form>
+        <div class="form-group">
+          <label for="transportation">Transportation</label>
+          <input type="string" class="form-control" name="trip[transportation]" id="transportation" value="<%=@trip.transportation%>">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit Trip</button>
+      </form>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>

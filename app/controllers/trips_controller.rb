@@ -1,7 +1,5 @@
 class TripsController < ApplicationController
 
-
-
   get '/my-trips/new' do
     if logged_in?
       erb :'trips/new'
@@ -14,7 +12,6 @@ class TripsController < ApplicationController
     trip = current_user.trips.create(params[:trip])
     redirect "/my-trips/#{trip.slug}"
   end
-
 
   get '/my-trips/:slug' do
 
@@ -60,6 +57,17 @@ class TripsController < ApplicationController
       end
     end
     redirect '/my-trips'
+  end
+
+  post '/search-trip' do
+    if logged_in?
+
+      @trips = Trip.find_by(params[:search],current_user)
+      erb :'trips/search-result'
+
+    else
+      redirect '/my-trips'
+    end
   end
 
 end

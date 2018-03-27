@@ -13,4 +13,24 @@ class Trip < ActiveRecord::Base
     Trip.all.detect{|trip| trip.user == user && trip.slug == slug}
   end
 
+  def self.find_by(search, user)
+
+    result = []
+    Trip.all.select do |trip|
+      if trip.user == user
+        searched = false
+        trip.attributes.except("id", "user_id").each do |name, value|
+
+          if value.class == Time
+            searched = true if value.to_formatted_s.include?(search)
+          else
+            searched = true if value.include?(search)
+          end
+        end
+        result << trip if searched
+      end
+    end
+    result
+  end
+
 end
