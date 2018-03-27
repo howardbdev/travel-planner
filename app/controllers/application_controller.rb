@@ -15,10 +15,20 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/error' do
+    erb :error
+  end
+
   helpers do
 
     def logged_in?
       !!session[:user_id]
+    end
+
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect '/error'
+      end
     end
 
     def current_user

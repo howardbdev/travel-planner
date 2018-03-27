@@ -1,3 +1,4 @@
+#Use Trip.delete_all to clear sql
 class TripsController < ApplicationController
 
   get '/my-trips/new' do

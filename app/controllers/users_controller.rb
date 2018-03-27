@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  get '/signup' do
-    erb :'users/signup'
-  end
-
   post '/signup' do
     if !params[:user][:first_name].empty? && !params[:user][:last_name].empty? && !params[:user][:email].empty?
       user = User.new(params[:user])
@@ -23,7 +19,7 @@ class UsersController < ApplicationController
       @user = current_user
       erb :'users/index'
     else
-      redirect '/'
+      redirect_if_not_logged_in
     end
   end
 
