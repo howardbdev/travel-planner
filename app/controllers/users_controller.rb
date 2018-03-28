@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
 
   post '/signup' do
-    if !params[:user][:first_name].empty? && !params[:user][:last_name].empty? && !params[:user][:email].empty?
-      user = User.new(params[:user])
-    end
 
-    if user.save
+    if User.find_by(first_name: params[:user][:first_name],last_name: params[:user][:last_name], email: params[:user][:email])
+      "A RECORD ALREADY EXISTS, PLEASE SIGN IN"
+    else
+      user = User.create(params[:user])
       session[:user_id] = user.id
       redirect "/my-trips"
-    else
-      redirect '/signup'
     end
 
   end

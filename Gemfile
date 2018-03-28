@@ -11,3 +11,4 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem "simple_calendar", "~> 2.0"
+gem 'sinatra-flash', '~> 0.3.0'

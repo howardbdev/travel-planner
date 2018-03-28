@@ -1,4 +1,5 @@
-
+A DEMANDER:
+- formmethod: overrides but the url still shows initial method 
 MODELS
 - User:
   has_many :trips

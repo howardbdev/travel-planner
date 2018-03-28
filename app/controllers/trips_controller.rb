@@ -10,8 +10,12 @@ class TripsController < ApplicationController
   end
 
   post '/my-trips' do
-    trip = current_user.trips.create(params[:trip])
-    redirect "/my-trips/#{trip.slug}"
+    trip = Trip.find_or_create_by!(params[:trip])
+    #if doesn't exist: create and assign user
+      trip.user = current_user
+      trip.save
+    #else raise message: already exist
+    redirect '/my-trips'
   end
 
   get '/my-trips/:slug' do
@@ -62,7 +66,7 @@ class TripsController < ApplicationController
 
   post '/search-trip' do
     if logged_in?
-      
+
       @trips = Trip.find_by(params[:search],current_user)
       erb :'trips/search-result'
 
