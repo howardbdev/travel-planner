@@ -10,12 +10,18 @@ class TripsController < ApplicationController
   end
 
   post '/my-trips' do
-    trip = Trip.find_or_create_by!(params[:trip])
-    #if doesn't exist: create and assign user
+    binding.pry
+    #HOW TO VALIDATE FOR DATES????!!!
+    if trip = current_user.trips.find_by(origin: params[:trip][:origin], destination: params[:trip][:destination], transportation: params[:trip][:transportation])
+      error("Trip already exists, redirecting to home page...")
+    else
+      trip = Trip.new(params[:trip])
       trip.user = current_user
       trip.save
-    #else raise message: already exist
-    redirect '/my-trips'
+        redirect '/my-trips'
+    end
+
+
   end
 
   get '/my-trips/:slug' do
