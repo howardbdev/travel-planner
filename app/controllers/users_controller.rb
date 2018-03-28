@@ -7,22 +7,18 @@ class UsersController < ApplicationController
     else
       user = User.create(params[:user])
       session[:user_id] = user.id
-      redirect "/my-trips"
+      redirect "/trips"
     end
 
   end
 
-  get '/my-trips' do
-    redirect_if_not_logged_in
-    @user = current_user
-    erb :'users/index'
-  end
+
 
   post '/login' do
     user = User.find_by(email: params[:user][:email])
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect "/my-trips"
+      redirect "/trips"
     else
       redirect '/'
     end
@@ -32,6 +28,10 @@ class UsersController < ApplicationController
     redirect_if_not_logged_in
     session.clear
     redirect '/'
+  end
+
+  get '/test_users' do
+    erb :'users/test'
   end
 
 end

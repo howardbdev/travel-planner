@@ -5,9 +5,9 @@ Returning: <%=@trip.returning%><br></br>
 
 
 
-<form action="/my-trips/<%=@trip.slug%>" method="POST">
+<form action="/trips/<%=@trip.slug%>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Trip">
-  <button type="submit" formaction='/my-trips/<%=@trip.slug%>/edit' formmethod="get" class="btn btn-primary" formnovalidate>Edit Trip</button>
+  <button type="submit" formaction='/trips/<%=@trip.slug%>/edit' formmethod="get" class="btn btn-primary" formnovalidate>Edit Trip</button>
   <!-- DEMANDE: works but url is weird -->
 </form>

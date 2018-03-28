@@ -1,44 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEE5EE;">
+  <a class="navbar-brand" href="#">TravelLog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<!--
-NOTES: Initially sorted by departing date, but with option to sort based on other criterium -->
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/trips/new">Create Trip</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>
+    </ul>
+    <form action="/search-trip" method="POST" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 
-<br></br>
-Hello, <%=@user.first_name%>!
-<br></br>
-<%if @user.trips.empty?%>
-  You have no existing trips, to create one, click <a href="/my-trips/new">here</a>
-<%else%>
 
-  Your trips are:
+<!-- FIX THIS TO FADED -->
+<div class="row" id="welcome_image">
 
-  <section class="col-sm-8 table-responsive">
-    <table class="table table-bordered table-striped table-condensed">
-      <thead>
-        <tr> <th>Origin</th> <th>Destination</th><th>Departing</th><th>Returning</th><th>Transportation</th>   </tr>
-      </thead>
-      <tbody>
-        <%@user.trips.each do |trip|%>
-        <tr>
-          <td><%=trip.origin%></td>
-          <td><%=trip.destination%></td>
-          <td><%=trip.departing%></td>
-          <td><%=trip.returning%></td>
-          <td><%=trip.transportation%></td>
-          <td>
-            <form method="get" action="/my-trips/<%=trip.slug%>/edit">
-              <input type="submit" value="Edit Trip">
-            </form>
-          </td>
-          <td>
-            <form action="/my-trips/<%=trip.slug%>" method="POST">
-              <input type="hidden" id="hidden" name="_method" value="DELETE">
-              <input type="submit" value="Delete Trip">
-            </form>
-          </td>
-        </tr>
-        <%end%>
+    <div class="col-sm col-md-10 offset-md-4 big_block" >
 
-      </tbody>
-      </table>
-  </section>
-<%end%>
+
+      Hello, <%=@user.first_name%>!
+      <br></br>
+      <%if @user.trips.empty?%>
+        You have no existing trips, to create one, click <a href="/trips/new">here</a>
+      <%else%>
+
+        Your trips are:
+
+        <section class="col-sm-8 table-responsive">
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr> <th>Origin</th> <th>Destination</th><th>Departing</th><th>Returning</th><th>Transportation</th>   </tr>
+            </thead>
+            <tbody>
+              <%@user.trips.each do |trip|%>
+              <tr>
+                <td><%=trip.origin%></td>
+                <td><%=trip.destination%></td>
+                <td><%=trip.departing%></td>
+                <td><%=trip.returning%></td>
+                <td><%=trip.transportation%></td>
+                <td>
+                  <form method="get" action="/trips/<%=trip.slug%>/edit">
+                    <input type="submit" value="Edit Trip">
+                  </form>
+                </td>
+                <td>
+                  <form action="/trips/<%=trip.slug%>" method="POST">
+                    <input type="hidden" id="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="Delete Trip">
+                  </form>
+                </td>
+              </tr>
+              <%end%>
+
+            </tbody>
+            </table>
+        </section>
+      <%end%>
+
+    </div>
+  </div>
+</div>

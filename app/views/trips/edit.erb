@@ -1,42 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEE5EE;">
+  <a class="navbar-brand" href="#">TravelLog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/trips/new">Create Trip</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>
+    </ul>
+    <form action="/search-trip" method="POST" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 
 
-<div class="container">
-  <div class="row align-items-center justify-content-center"> <!--WHY ISN"T THIS WORK??!?!-->
-    <div class="col-lg-3"></div>
-     <div class="col-lg-6">
-      <form action="/my-trips/<%=@trip.slug%>" method="POST">
-        <input type="hidden" id="hidden" name="_method" value="PATCH">
-        <div class="form-group">
-          <label for="Origin">Origin</label>
-          <input type="string" class="form-control" name="trip[origin]"  id="origin" value="<%=@trip.origin%>" required>
-        </div>
-        <div class="form-group">
-          <label for="destination">Destination</label>
-          <input type="string" class="form-control" name="trip[destination]"  id="destination" value="<%=@trip.destination%>" required>
-        </div>
 
-        <div class="form-group">
-          <label for="departing">Departing</label>
-          <input type="date" class="form-control" name="trip[departing]"  id="departing" value="<%=@trip.departing.to_formatted_s.split(" ").first
-%>" required>
-        </div>
 
-        <div class="form-group">
-          <label for="returning">Returning</label>
-          <input type="date" class="form-control" name="trip[returning]" id="returning" value="<%=@trip.returning.to_formatted_s.split(" ").first
-%>" required>
-        </div>
+<div class="row" id="welcome_image" >
+     <div class="col-sm col-md-4 offset-md-4 big_block">
 
-        <div class="form-group">
-          <label for="transportation">Transportation</label>
-          <input type="string" class="form-control" name="trip[transportation]" id="transportation" value="<%=@trip.transportation%>" required>
-        </div>
+       <form action="/trips/<%=@trip.slug%>" method="POST">
+         <input type="hidden" id="hidden" name="_method" value="PATCH">
+         <div class="form-group">
+           <label for="Origin">Origin</label>
+           <input type="string" class="form-control" name="trip[origin]"  id="origin" value="<%=@trip.origin%>" required>
+         </div>
+         <div class="form-group">
+           <label for="destination">Destination</label>
+           <input type="string" class="form-control" name="trip[destination]"  id="destination" value="<%=@trip.destination%>" required>
+         </div>
 
-        <button type="submit" class="btn btn-primary">Edit Trip</button>
-        <button type="submit" formaction='/my-trips' formmethod="get" class="btn btn-primary" formnovalidate>Cancel</button>
-         <!-- DEMANDE: formmethod works but the url seems to still be patch?! -->
-      </form>
+         <div class="form-group">
+           <label for="departing">Departing</label>
+           <input type="date" class="form-control" name="trip[departing]"  id="departing" value="<%=@trip.departing.to_formatted_s.split(" ").first
+       %>" required>
+         </div>
+
+         <div class="form-group">
+           <label for="returning">Returning</label>
+           <input type="date" class="form-control" name="trip[returning]" id="returning" value="<%=@trip.returning.to_formatted_s.split(" ").first
+       %>" required>
+         </div>
+
+         <div class="form-group">
+           <label for="transportation">Transportation</label>
+           <input type="string" class="form-control" name="trip[transportation]" id="transportation" value="<%=@trip.transportation%>" required>
+         </div>
+
+         <button type="submit" class="btn btn-primary">Edit Trip</button>
+         <button type="submit" formaction='/trips' formmethod="get" class="btn btn-primary" formnovalidate>Cancel</button>
+          <!-- DEMANDE: formmethod works but the url seems to still be patch?! -->
+       </form>
+
+
     </div>
-    <div class="col-lg-3"></div>
+
   </div>
 </div>

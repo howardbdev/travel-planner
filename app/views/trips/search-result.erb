@@ -18,12 +18,12 @@
           <td><%=trip.transportation%></td>
 
           <td>
-            <form method="get" action="/my-trips/<%=trip.slug%>/edit">
+            <form method="get" action="/trips/<%=trip.slug%>/edit">
               <input type="submit" value="Edit Trip">
             </form>
           </td>
           <td>
-            <form action="/my-trips/<%=trip.slug%>" method="POST">
+            <form action="/trips/<%=trip.slug%>" method="POST">
               <input type="hidden" id="hidden" name="_method" value="DELETE">
               <input type="submit" value="Delete Trip">
             </form>

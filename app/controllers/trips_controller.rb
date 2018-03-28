@@ -1,12 +1,30 @@
 #Use Trip.delete_all to clear sql
 class TripsController < ApplicationController
 
-  get '/my-trips/new' do
+
+  get '/trips' do
+    redirect_if_not_logged_in
+    @user = current_user
+    erb :'users/index'
+  end
+
+  get '/new' do #NEED TO CHANGE BACK TO /trips/new
     redirect_if_not_logged_in
     erb :'trips/new'
   end
 
-  post '/my-trips' do
+  # ASK WHY BOOTSTRP DOESN"T WORK WITH THIS ROUTE?! => As soon as I add '/trips/' bootstrap stops working
+  get '/trips/new' do
+    redirect_if_not_logged_in
+    erb :'trips/new'
+  end
+
+  get '/test_edit' do
+    @trip = Trip.all.first
+    erb :'trips/edit'
+  end
+
+  post '/trips' do
 
   if trip = current_user.trips.find_by(origin: params[:trip][:origin], destination: params[:trip][:destination], departing: params[:trip][:departing].to_date, returning: params[:trip][:returning].to_date, transportation: params[:trip][:transportation])
     #BUILD ALERT!
@@ -14,13 +32,13 @@ class TripsController < ApplicationController
     trip = Trip.new(params[:trip])
     trip.user = current_user
     trip.save
-      redirect '/my-trips'
+      redirect '/trips'
   end
 
 
   end
 
-  get '/my-trips/:slug' do
+  get '/trips/:slug' do
     redirect_if_not_logged_in
     @trip = Trip.find_by_slug(current_user, params[:slug])
     if @trip
@@ -28,7 +46,7 @@ class TripsController < ApplicationController
     end
   end
 
-  get '/my-trips/:slug/edit' do
+  get '/trips/:slug/edit' do
     redirect_if_not_logged_in
     @trip = Trip.find_by_slug(current_user, params[:slug])
     if @trip
@@ -39,23 +57,23 @@ class TripsController < ApplicationController
 
   end
 
-  patch '/my-trips/:slug' do
+  patch '/trips/:slug' do
 
     @trip = Trip.find_by_slug(current_user, params[:slug])
     if @trip
       @trip.update(params[:trip])
-      redirect '/my-trips'
+      redirect '/trips'
     end
 
   end
 
-  delete '/my-trips/:slug' do
+  delete '/trips/:slug' do
 
     @trip = Trip.find_by_slug(current_user, params[:slug])
     if @trip
       @trip.destroy
     end
-    redirect '/my-trips'
+    redirect '/trips'
 
   end
 
