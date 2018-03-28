@@ -4,9 +4,10 @@ Departing: <%=@trip.departing%><br></br>
 Returning: <%=@trip.returning%><br></br>
 
 
-Go back to all your trips: <a href="/my-trips">here</a>
-<a href="/my-trips/<%=@trip.slug%>/edit">Edit Trip</a>
+
 <form action="/my-trips/<%=@trip.slug%>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Trip">
 </form>
+
+<input type="button" class="btn btn-info" value="Edit Trip" onclick="location.href = '/my-trips/<%=@trip.slug%>/edit';">
