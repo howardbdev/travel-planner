@@ -30,8 +30,5 @@ class UsersController < ApplicationController
     redirect '/'
   end
 
-  get '/test_users' do
-    erb :'users/test'
-  end
 
 end

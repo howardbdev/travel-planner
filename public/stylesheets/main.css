@@ -19,3 +19,10 @@ div#logged_in_background {
   background: url("../images/faded.jpg");
   background-size: 100% 100%;
 }
+
+/* 
+NOT WORKING, WHY? */
+h1#logo {
+  font-family: 'Parisienne', cursive;
+  color: red;
+}

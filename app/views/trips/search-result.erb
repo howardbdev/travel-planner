@@ -1,41 +1,50 @@
-<% if @trips.empty? %>
-  No result.
-<% else %>
-  Your search has <%=@trips.size%> result(s):
-  <br></br>
-  <section class="col-sm-8 table-responsive">
-    <table class="table table-bordered table-striped table-condensed">
-      <thead>
-        <tr> <th>Origin</th> <th>Destination</th><th>Departing</th><th>Returning</th><th>Transportation</th>   </tr>
-      </thead>
-      <tbody>
-        <%@trips.each do |trip|%>
-        <tr>
-          <td><%=trip.origin%></td>
-          <td><%=trip.destination%></td>
-          <td><%=trip.departing%></td>
-          <td><%=trip.returning%></td>
-          <td><%=trip.transportation%></td>
 
-          <td>
-            <form method="get" action="/trips/<%=trip.slug%>/edit">
-              <input type="submit" value="Edit Trip">
-            </form>
-          </td>
-          <td>
-            <form action="/trips/<%=trip.slug%>" method="POST">
-              <input type="hidden" id="hidden" name="_method" value="DELETE">
-              <input type="submit" value="Delete Trip">
-            </form>
-          </td>
-        </tr>
-        <%end%>
+<!-- FIX THIS TO FADED -->
+<div class="row" id="logged_in_background" >
 
-      </tbody>
-      </table>
-  </section>
+    <div class="col-sm col-md-10 offset-md-4 big_block" >
 
-<%end %>
+      <% if @trips.empty? %>
+        No result.
+      <% else %>
+        Your search has <%=@trips.size%> result(s):
+        <br></br>
+        <section class="col-sm-8 table-responsive">
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr> <th>Origin</th> <th>Destination</th><th>Departing</th><th>Returning</th><th>Transportation</th>   </tr>
+            </thead>
+            <tbody>
+              <%@trips.each do |trip|%>
+              <tr>
+                <td><%=trip.origin%></td>
+                <td><%=trip.destination%></td>
+                <td><%=trip.departing%></td>
+                <td><%=trip.returning%></td>
+                <td><%=trip.transportation%></td>
 
-List all results and highlight the search term
-- sort trips by departing date
+                <td>
+                  <form method="get" action="/trips/<%=trip.slug%>/edit">
+                    <input type="submit" value="Edit Trip">
+                  </form>
+                </td>
+                <td>
+                  <form action="/trips/<%=trip.slug%>" method="POST">
+                    <input type="hidden" id="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="Delete Trip">
+                  </form>
+                </td>
+              </tr>
+              <%end%>
+
+            </tbody>
+            </table>
+        </section>
+
+      <%end %>
+
+      List all results and highlight the search term
+      - sort trips by departing date
+
+    </div>
+  </div>

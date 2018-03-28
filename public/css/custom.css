@@ -24,3 +24,19 @@
    line-height: 27px;
  }
 }
+
+/*
+.btn-outline-primary {
+color: #80020;
+background-color: transparent;
+background-image: none;
+border-color: #80020;
+} */
+
+
+.btn.test_btn {
+
+  background: #000;
+
+
+}

@@ -10,10 +10,39 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link  href="stylesheets/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
 
     <title>Travel Planner</title>
   </head>
   <body>
+    <%if logged_in?%>
+      <nav class="navbar navbar-expand navbar-light" style="background-color: #EEE5EE;">
+        <div class="container">
+          <div ><h1 style="font-family: 'Parisienne', cursive; color: #800020;">TravelLog</h1></div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/trips/new">Create Trip</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Log Out</a>
+              </li>
+            </ul>
+            <form action="/search-trip" method="POST" class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <%end%>
 
     <%=yield%>
 

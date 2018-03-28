@@ -1,21 +1,32 @@
-<nav class="navbar navbar-expand navbar-light" style="background-color: #EEE5EE;">
-  <a class="navbar-brand" href="#">TravelLog</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <form action="/login" method="POST" class="form-inline my-2 my-lg-0 ml-auto">
-        <input class="form-control mr-sm-2" name="user[email]" type="email" placeholder="email@example.com">
-        <input class="form-control mr-sm-2" name="user[password]" type="password" placeholder="Password">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in</button>
-    </form>
+<nav class="navbar navbar-expand navbar-light" style="background-color: #EEE5EE;">
+  <div class="container">
+
+    <div ><h1 style="font-family: 'Parisienne', cursive; color: #800020;">TravelLog</h1></div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
+      <!-- USELESS, just for display: so the height is the same as when logged in -->
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#"></a>
+        </li>
+      </ul>
+      <!-- USELESS, just for display: so the height is the same as when logged in -->
+      <form action="/login" method="POST" class="form-inline my-2 my-lg-0 ml-auto">
+          <input class="form-control mr-sm-2" name="user[email]" type="email" placeholder="email@example.com">
+          <input class="form-control mr-sm-2" name="user[password]" type="password" placeholder="Password">
+          <button class="btn test_btn my-2 my-sm-0" type="submit">Sign in</button>
+      </form>
+    </div>
+
   </div>
 </nav>
 
 <div class="row" id="welcome_image" >
-    <div class="col-md-4 big_block"></div>
-    <div class="col-sm col-md-4 offset-md-4 big_block" >
+    <div class="col-sm col-md-4 offset-md-6 big_block" >
       <h2>Ready to travel the world?</h2>
       <h2>Create a new account here:</h2>
       <form action="/signup" method="POST">
