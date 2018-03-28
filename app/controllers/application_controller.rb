@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       redirect '/my-trips'
     else
-      erb :index
+      erb :welcome
     end
   end
 

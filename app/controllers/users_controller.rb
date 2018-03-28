@@ -13,12 +13,9 @@ class UsersController < ApplicationController
   end
 
   get '/my-trips' do
-    if logged_in?
-      @user = current_user
-      erb :'users/index'
-    else
-      redirect_if_not_logged_in
-    end
+    redirect_if_not_logged_in
+    @user = current_user
+    erb :'users/index'
   end
 
   post '/login' do
@@ -32,11 +29,9 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if logged_in?
-      session.clear
-    end
+    redirect_if_not_logged_in
+    session.clear
     redirect '/'
   end
-
 
 end
