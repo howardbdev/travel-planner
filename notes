@@ -1,8 +1,3 @@
-ISSUES:
-1. Flexbox: grid and forms placement
-3. Add google map to each trip page
-4. Highlight current page in navbar (layout.erb)
-
 
 MODELS
 - User:
