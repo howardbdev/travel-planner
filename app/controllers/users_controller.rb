@@ -4,8 +4,6 @@ class UsersController < ApplicationController
 
     if User.find_by(first_name: params[:user][:first_name],last_name: params[:user][:last_name], email: params[:user][:email])
       erb :"/users/already_exists"
-
-      #pop up login form
     else
       user = User.create(params[:user])
       session[:user_id] = user.id
