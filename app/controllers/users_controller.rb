@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   post '/signup' do
 
     if User.find_by(first_name: params[:user][:first_name],last_name: params[:user][:last_name], email: params[:user][:email])
-      "A RECORD ALREADY EXISTS, PLEASE SIGN IN"
+      erb :"/users/already_exists"
+
+      #pop up login form
     else
       user = User.create(params[:user])
       session[:user_id] = user.id

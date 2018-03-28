@@ -1,0 +1,50 @@
+<!-- DEMANDE: This is essentially just the index page, but with an added alert message
+Is there a better way of displaying? (just add on the alert when @exist= true) -->
+
+<nav class="navbar navbar-expand navbar-light" style="background-color: #EEE5EE;">
+  <a class="navbar-brand" href="#">TravelLog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <form action="/login" method="POST" class="form-inline my-2 my-lg-0 ml-auto">
+        <input class="form-control mr-sm-2" name="user[email]" type="email" placeholder="email@example.com">
+        <input class="form-control mr-sm-2" name="user[password]" type="password" placeholder="Password">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in</button>
+    </form>
+  </div>
+</nav>
+<div class="big_block alert alert-primary" role="alert">
+  The user already exists, please sign in instead.
+</div>
+
+<div class="row" id="welcome_image" >
+    <div class="col-md-4 big_block"></div>
+
+    <div class="col-sm col-md-4 offset-md-4 big_block" >
+      <h2>Ready to travel the world?</h2>
+      <h2>Create a new account here:</h2>
+      <form action="/signup" method="POST">
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="string" class="form-control" name="user[first_name]"  id="first_name" placeholder="First name" required>
+        </div>
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input type="string" class="form-control" name="user[last_name]"  id="last_name" placeholder="Last name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" name="user[email]"  id="email" placeholder="email@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="user[password]" id="password" placeholder="New password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Account</button>
+      </form>
+    </div>
+  </div>
+</div>
