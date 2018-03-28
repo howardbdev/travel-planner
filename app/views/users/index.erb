@@ -24,7 +24,11 @@ Hello, <%=@user.first_name%>!
           <td><%=trip.departing%></td>
           <td><%=trip.returning%></td>
           <td><%=trip.transportation%></td>
-          <td><a href="my-trips/<%=trip.slug%>/edit">Edit Trip</a></td>
+          <td>
+            <form method="get" action="/my-trips/<%=trip.slug%>/edit">
+              <input type="submit" value="Edit Trip">
+            </form>
+          </td>
           <td>
             <form action="/my-trips/<%=trip.slug%>" method="POST">
               <input type="hidden" id="hidden" name="_method" value="DELETE">

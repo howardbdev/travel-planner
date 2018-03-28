@@ -13,3 +13,9 @@ div#welcome_image {
   background: url("../images/Paris.jpg");
   background-size: 100% 100%;
 }
+
+div#logged_in_background {
+  height: 90vh;
+  background: url("../images/faded.jpg");
+  background-size: 100% 100%;
+}
