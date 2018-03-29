@@ -34,9 +34,19 @@ border-color: #80020;
 } */
 
 
-.btn.test_btn {
+/* WHY CAN"T I SELECT?  (welcome.erb Sign In button) */
+.btn.btn-outline-burgundy {
 
-  background: #000;
+  color: #800020;
+  background-color: transparent;
+  background-image: none;
+  border-color: #800020;
 
 
+}
+
+.btn-burgundy {
+  color: #fff;
+  background-color: #800020;
+  border-color: #800020;
 }
