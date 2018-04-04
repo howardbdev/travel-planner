@@ -3,7 +3,7 @@ require './config/environment'
 
 class ApplicationController < Sinatra::Base
 
-  register Sinatra::Flash  #LOOK INTO THIS LINE
+  register Sinatra::Flash
 
   configure do
     set :public_folder, 'public'
@@ -24,9 +24,53 @@ class ApplicationController < Sinatra::Base
     erb :error
   end
 
+  post '/signup' do
+
+    if User.find_by(first_name: params[:user][:first_name],last_name: params[:user][:last_name], email: params[:user][:email])
+      flash[:user_already_exists] = "The user already exists, please sign in instead."
+      binding.pry
+      redirect "/"
+
+    else
+      user = User.create(params[:user])
+      session[:user_id] = user.id
+      current_user
+
+      redirect "/trips"
+    end
+
+  end
+
+
+  post '/login' do
+    user = User.find_by(email: params[:user][:email])
+    if user && user.authenticate(params[:user][:password])
+      session[:user_id] = user.id
+      redirect "/trips"
+    else
+      redirect '/'
+    end
+  end
+
+  get '/logout' do
+    redirect_if_not_logged_in
+    session.clear
+    redirect '/'
+  end
+
   helpers do
+    def current_user
+      #returns @current_user if it exists, or sets it to the user if session[:user_id], i.e. if logged in
+      # if not logged in, returns nil
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+
+    end
 
     def logged_in?
+ # Kenlyn suggested:
+ # !!current_user
+ #is this the most efficient way? Because calling the current_user method everytime
+# when we really just want to know if session[:user_id] exists
       !!session[:user_id]
     end
 
@@ -36,8 +80,6 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    def current_user
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    end
+
   end
 end
