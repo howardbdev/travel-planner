@@ -1,5 +1,24 @@
-A DEMANDER:
-- formmethod: overrides but the url still shows initial method 
+ISSUES:
+1. - run shotgun -p 3000
+    - to specify port
+- but still mention it; is something wrong with my rvm?
+    - if I run rvm —version
+        - gets error: Warning! PATH is not properly set up, /Users/ingridooo/.rvm/gems/ruby-2.3.3/bin is not at first place
+
+2. nested routes:
+  - "/new" works but not "/trips/new"
+  - ditto with edit
+
+TO WORK ON:
+1. Adding sinatra-flash to
+  - user signup & create new trip: already exists (remove the view pages)
+
+2. Expand trip: one way or aller-retour?
+
+3. Dont' really need the show page... ?
+
+
+
 MODELS
 - User:
   has_many :trips

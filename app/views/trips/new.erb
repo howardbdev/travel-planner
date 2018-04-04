@@ -4,11 +4,11 @@
       <form action="/trips" method="POST">
         <div class="form-group">
           <label for="Origin">Origin</label>
-          <input type="string" class="form-control" name="trip[origin]"  id="origin" placeholder="City, Country" required pattern="[a-zA-Z]+,\s[a-zA-Z]+">
+          <input type="string" class="form-control" name="trip[origin]"  id="origin" placeholder="City, Country" required pattern="[a-zA-Z]+,\s[a-zA-Z]+" require>
         </div>
         <div class="form-group">
           <label for="destination">Destination</label>
-          <input type="string" class="form-control" name="trip[destination]"  id="destination" placeholder="City, Country" required>
+          <input type="string" class="form-control" name="trip[destination]"  id="destination" placeholder="City, Country" required pattern="[a-zA-Z]+,\s[a-zA-Z]+" required>
         </div>
         <div class="form-group">
           <label for="departing">Departing</label>

@@ -2,22 +2,21 @@
 class TripsController < ApplicationController
 
 
+  get '/trips/new' do
+    redirect_if_not_logged_in
+    erb :'trips/new'
+  end
+
   get '/trips' do
     redirect_if_not_logged_in
     @user = current_user
     erb :'users/index'
   end
-
-  get '/new' do #NEED TO CHANGE BACK TO /trips/new
-    redirect_if_not_logged_in
-    erb :'trips/new'
-  end
-
-  # ASK WHY BOOTSTRP DOESN"T WORK WITH THIS ROUTE?! => As soon as I add '/trips/' bootstrap stops working
-  get '/trips/new' do
-    redirect_if_not_logged_in
-    erb :'trips/new'
-  end
+  # 
+  # get '/new' do #NEED TO CHANGE BACK TO /trips/new
+  #   redirect_if_not_logged_in
+  #   erb :'trips/new'
+  # end
 
   get '/test_edit' do
     @trip = Trip.all.first
@@ -54,7 +53,6 @@ class TripsController < ApplicationController
     else
       "You do not have this trip"
     end
-
   end
 
   patch '/trips/:slug' do

@@ -1,4 +1,9 @@
+require './config/environment'
+
+
 class ApplicationController < Sinatra::Base
+
+  register Sinatra::Flash  #LOOK INTO THIS LINE
 
   configure do
     set :public_folder, 'public'
@@ -32,7 +37,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      User.find(session[:user_id])
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
   end
 end
