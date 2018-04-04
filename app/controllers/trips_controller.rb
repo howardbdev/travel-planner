@@ -2,21 +2,23 @@
 class TripsController < ApplicationController
 
 
-  get '/trips/new' do
-    redirect_if_not_logged_in
-    erb :'trips/new'
-  end
 
   get '/trips' do
     redirect_if_not_logged_in
     @user = current_user
     erb :'users/index'
   end
-  # 
-  # get '/new' do #NEED TO CHANGE BACK TO /trips/new
-  #   redirect_if_not_logged_in
-  #   erb :'trips/new'
-  # end
+
+
+    get '/trips/new' do
+      redirect_if_not_logged_in
+      erb :'trips/new'
+    end
+
+  get '/new' do #NEED TO CHANGE BACK TO /trips/new
+    redirect_if_not_logged_in
+    erb :'trips/new'
+  end
 
   get '/test_edit' do
     @trip = Trip.all.first
@@ -25,14 +27,13 @@ class TripsController < ApplicationController
 
   post '/trips' do
 
-  if trip = current_user.trips.find_by(origin: params[:trip][:origin], destination: params[:trip][:destination], departing: params[:trip][:departing].to_date, returning: params[:trip][:returning].to_date, transportation: params[:trip][:transportation])
-    #BUILD ALERT!
-  else
-    trip = Trip.new(params[:trip])
-    trip.user = current_user
-    trip.save
-      redirect '/trips'
-  end
+    if trip = current_user.trips.find_by(origin: params[:trip][:origin], destination: params[:trip][:destination], departing: params[:trip][:departing].to_date, returning: params[:trip][:returning].to_date, transportation: params[:trip][:transportation])
+      flash[:trip_already_exists] = "The trip you're trying to create already exists!"
+    else
+      current_user.trips.create(params[:trip])
+    end
+
+    redirect '/trips'
 
 
   end
@@ -59,9 +60,16 @@ class TripsController < ApplicationController
 
     @trip = Trip.find_by_slug(current_user, params[:slug])
     if @trip
-      @trip.update(params[:trip])
-      redirect '/trips'
+      if current_user.trips.find_by(origin: params[:trip][:origin], destination: params[:trip][:destination], departing: params[:trip][:departing].to_date, returning: params[:trip][:returning].to_date, transportation: params[:trip][:transportation])
+      flash[:edit_already_exists]=  "Edit cancelled: You are trying to edit this trip into another trip that already exists"
+      else
+        @trip.update(params[:trip])
+      end
+
+    else
+    flash[:no_trip] = "You do not have this trip"
     end
+      redirect '/trips'
 
   end
 
