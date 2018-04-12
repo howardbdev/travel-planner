@@ -8,14 +8,17 @@ ISSUES:
 2. nested routes:
   - "/new" works but not "/trips/new"
   - ditto with edit
+  SOLUTION : https://stackoverflow.com/questions/24153013/stylesheet-not-applying-to-sinatra-erb-views
+  => change to absolute path
+
+3.Flash message styling not working
+
+4. Logged_in? and current_user logic (double check)
 
 TO WORK ON:
-1. Adding sinatra-flash to
-  - user signup & create new trip: already exists (remove the view pages)
 
 2. Expand trip: one way or aller-retour?
 
-3. Dont' really need the show page... ?
 
 
 

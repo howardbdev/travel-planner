@@ -1,5 +1,5 @@
 require './config/environment'
-
+require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -26,9 +26,8 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
 
-    if User.find_by(first_name: params[:user][:first_name],last_name: params[:user][:last_name], email: params[:user][:email])
+    if User.find_by(email: params[:user][:email])
       flash[:user_already_exists] = "The user already exists, please sign in instead."
-      binding.pry
       redirect "/"
 
     else

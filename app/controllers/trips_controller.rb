@@ -1,7 +1,5 @@
-#Use Trip.delete_all to clear sql
+
 class TripsController < ApplicationController
-
-
 
   get '/trips' do
     redirect_if_not_logged_in
@@ -9,33 +7,19 @@ class TripsController < ApplicationController
     erb :'users/index'
   end
 
-
-    get '/trips/new' do
-      redirect_if_not_logged_in
-      erb :'trips/new'
-    end
-
-  get '/new' do #NEED TO CHANGE BACK TO /trips/new
+  get '/trips/new' do
     redirect_if_not_logged_in
     erb :'trips/new'
   end
 
-  get '/test_edit' do
-    @trip = Trip.all.first
-    erb :'trips/edit'
-  end
 
   post '/trips' do
-
     if trip = current_user.trips.find_by(origin: params[:trip][:origin], destination: params[:trip][:destination], departing: params[:trip][:departing].to_date, returning: params[:trip][:returning].to_date, transportation: params[:trip][:transportation])
       flash[:trip_already_exists] = "The trip you're trying to create already exists!"
     else
       current_user.trips.create(params[:trip])
     end
-
     redirect '/trips'
-
-
   end
 
   get '/trips/:slug' do
@@ -74,7 +58,6 @@ class TripsController < ApplicationController
   end
 
   delete '/trips/:slug' do
-
     @trip = Trip.find_by_slug(current_user, params[:slug])
     if @trip
       @trip.destroy
