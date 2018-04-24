@@ -12,7 +12,6 @@ class TripsController < ApplicationController
     erb :'trips/new'
   end
 
-
   post '/trips' do
     if trip = current_user.trips.find_by(origin: params[:trip][:origin], destination: params[:trip][:destination], departing: params[:trip][:departing].to_date, returning: params[:trip][:returning].to_date, transportation: params[:trip][:transportation])
       flash[:trip_already_exists] = "The trip you're trying to create already exists!"
@@ -43,17 +42,14 @@ class TripsController < ApplicationController
   patch '/trips/:slug' do
 
     @trip = Trip.find_by_slug(current_user, params[:slug])
-    if @trip
-      if current_user.trips.find_by(origin: params[:trip][:origin], destination: params[:trip][:destination], departing: params[:trip][:departing].to_date, returning: params[:trip][:returning].to_date, transportation: params[:trip][:transportation])
-      flash[:edit_already_exists]=  "Edit cancelled: You are trying to edit this trip into another trip that already exists"
-      else
-        @trip.update(params[:trip])
-      end
 
+    if current_user.trip_exists?(params)
+      flash[:edit_already_exists]=  "Edit cancelled: You are trying to edit this trip into another trip that already exists"
     else
-    flash[:no_trip] = "You do not have this trip"
+      @trip.update(params[:trip])
     end
-      redirect '/trips'
+
+    redirect '/trips'
 
   end
 
@@ -70,5 +66,6 @@ class TripsController < ApplicationController
     @trips = Trip.find_by(params[:search],current_user)
     erb :'trips/search-result'
   end
+
 
 end

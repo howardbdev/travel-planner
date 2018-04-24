@@ -1,6 +1,9 @@
 class Trip < ActiveRecord::Base
   belongs_to :user
 
+  validates :transportation, :departing, :returning, :origin, :destination, presence: true
+  
+
   def slug
     "#{origin.split(', ').first}" + "-" + "#{destination.split(', ').first}" + "-" + "#{departing.month}" + "-" + "#{departing.year}" + "-id=" +"#{id}"
   end

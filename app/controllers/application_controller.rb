@@ -40,7 +40,6 @@ class ApplicationController < Sinatra::Base
 
   end
 
-
   post '/login' do
     user = User.find_by(email: params[:user][:email])
     if user && user.authenticate(params[:user][:password])
@@ -70,7 +69,8 @@ class ApplicationController < Sinatra::Base
  # !!current_user
  #is this the most efficient way? Because calling the current_user method everytime
 # when we really just want to know if session[:user_id] exists
-      !!session[:user_id]
+      # !!session[:user_id]
+      !!current_user
     end
 
     def redirect_if_not_logged_in
@@ -78,7 +78,6 @@ class ApplicationController < Sinatra::Base
         redirect '/error'
       end
     end
-
 
   end
 end
