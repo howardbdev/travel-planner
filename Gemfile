@@ -16,3 +16,7 @@ gem 'sinatra-flash', '~> 0.3.0'
      gem 'tux'
      gem 'sqlite3'
  end
+
+ group :production do
+  gem 'pg'
+ end
