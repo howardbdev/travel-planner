@@ -7,11 +7,11 @@ gem 'require_all'
 gem 'thin'
 gem 'bcrypt'
 gem 'sinatra-flash', '~> 0.3.0'
+gem 'pry'
 
 
  group :development do
      gem 'shotgun'
-     gem 'pry'
      gem 'tux'
      gem 'sqlite3'
  end
