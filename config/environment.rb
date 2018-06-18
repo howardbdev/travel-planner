@@ -11,8 +11,8 @@ end
 
 
 configure :production do
-  set :database, { adapter: postgresql,
-   encoding: unicode,
+  set :database, { adapter: 'postgresql',
+   encoding: 'unicode',
    pool: 5,
    host: ENV['DATABASE_HOST'],
    database: ENV['DATABASE_NAME'],
