@@ -11,7 +11,11 @@ end
 
 
 configure :production do
-  set :database, {adapter: 'postgresql',  encoding: 'unicode', database: 'production_db', pool: 2, username: 'your_username', password: 'your_password'}
+  set :database, {adapter: 'postgresql',  encoding: 'unicode', database: 'production_db', pool: 2}
 end
+
+# configure :production do
+#   set :database, {adapter: 'postgresql',  encoding: 'unicode', database: 'production_db', pool: 2, username: 'your_username', password: 'your_password'}
+# end
 
 require_all 'app'
